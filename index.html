@@ -5,13 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <style>
+  /* Typographie optimisée pour Galaxy S25 Ultra */
   html {
     font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    letter-spacing: 0.01rem;
+    line-height: 1.6;
+  }
+  h1, h2, h3, .day-title {
+    letter-spacing: -0.01em;
+    font-weight: 800;
+  }
+  p, .activity-text {
+    line-height: 1.65;
+    color: #1f2937;
+  }
+  .text-label {
+    font-weight: 600;
+    color: #4b5563;
   }
   @media (max-width: 600px) {
     html { font-size: 17px; }
-    body { padding-bottom: env(safe-area-inset-bottom, 24px); }
+    body { 
+      padding-bottom: env(safe-area-inset-bottom, 24px);
+      padding-left: env(safe-area-inset-left, 16px);
+      padding-right: env(safe-area-inset-right, 16px);
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
     .footer-btn, .footer-btn * { font-size: 1.1em; }
+  }
+  /* Optimisation pour écrans larges Galaxy Ultra */
+  @media (min-width: 412px) {
+    .container {
+      padding-left: 16px;
+      padding-right: 16px;
+      max-width: 100%;
+    }
   }
   footer, .footer {
     padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -47,11 +80,135 @@
     padding: 12px 16px 12px 40px;
   }
   .day-card, .place-card {
-    border-radius: 18px;
-    padding: 18px 14px;
-    margin-bottom: 14px;
-    font-size: 1.03em;
+    border-radius: 22px;
+    padding: 22px 16px;
+    margin-bottom: 1px;
+    font-size: 1.09em;
+    box-shadow: 0 4px 18px 0 #00000018, 0 1.5px 3px #00000009;
   }
+  .day-card .titre-activite, .place-card .titre-lieu, .moment-label {
+    font-size: 1.18em;
+    font-weight: bold;
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+  }
+  .action-btn, .mark-done-btn {
+    display: block !important;
+    width: 92% !important;
+    margin: 14px auto 0 auto !important;
+    padding: 16px 0 !important;
+    font-size: 1.12em !important;
+    font-weight: 700 !important;
+    border-radius: 14px !important;
+    background: #6366f1 !important;
+    color: #fff !important;
+    box-shadow: 0 2px 10px #6366f133 !important;
+    text-align: center !important;
+    min-height: 48px;
+    transition: background 0.18s, box-shadow 0.18s;
+  }
+  .action-btn:active, .mark-done-btn:active {
+    background: #4338ca !important;
+  }
+  .lieu-card {
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    padding: 10px 0;
+  }
+  .activity-block, .lieu-block {
+    margin-bottom: 18px;
+  }
+  .mark-done-btn {
+    width: 140px !important;
+    min-width: 140px !important;
+    max-width: 140px !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    padding: 6px 10px !important;
+    font-size: 0.88em !important;
+    border-radius: 6px !important;
+    text-align: center !important;
+    background-color: #6366f1 !important;
+    color: white !important;
+    margin-left: auto !important;
+    line-height: 1.2 !important;
+  }
+
+  .location-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    padding: 0 12px !important;
+    margin: 4px !important;
+    border-radius: 16px !important;
+    background-color: #f3f4f6 !important;
+    color: #4b5563 !important;
+    font-size: 0.9em !important;
+    font-weight: 500 !important;
+    white-space: nowrap !important;
+    border: 1px solid #e5e7eb !important;
+  }
+
+  .dark-mode .location-badge {
+    background-color: #232946 !important;
+    color: #fff !important;
+    border-color: #88a !important;
+    box-shadow: 0 2px 6px rgba(30, 41, 59, 0.25) !important;
+  }
+  
+  .dark-mode .location-badge.completed,
+  .dark-mode .mark-done-btn.completed {
+    background-color: #10b981 !important;
+    color: #e6ffed !important;
+    border-color: #34d399 !important;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12) !important;
+  }
+  
+  .mark-done-btn.completed {
+    background-color: #10b981 !important;
+    color: #fff !important;
+    color: white !important;
+  }
+  .timeline-btn, .nav-btn, .step-btn, .day-nav-btn {
+    border-radius: 24px !important;
+    background: #e0e7ff !important;
+    color: #1e293b !important;
+    font-size: 1.18em !important;
+    font-weight: 700 !important;
+    padding: 18px 26px !important;
+    margin: 0 10px !important;
+    box-shadow: 0 4px 18px #6366f133 !important;
+    min-height: 52px;
+    min-width: 88px;
+    transition: background 0.18s, box-shadow 0.18s, transform 0.13s;
+    outline: none;
+    border: none;
+    position: relative;
+  }
+  .timeline-btn:active, .nav-btn:active, .step-btn:active, .day-nav-btn:active {
+    background: #c7d2fe !important;
+    box-shadow: 0 6px 24px #6366f144 !important;
+    transform: scale(0.98);
+  }
+  .timeline-btn:focus-visible, .nav-btn:focus-visible, .step-btn:focus-visible, .day-nav-btn:focus-visible {
+    box-shadow: 0 0 0 3px #6366f1cc !important;
+  }
+  .day-nav-btn[disabled] {
+    opacity: 0.4 !important;
+    pointer-events: none !important;
+  }
+  .timeline-btn:active, .nav-btn:active, .step-btn:active {
+    background: #c7d2fe !important;
+    box-shadow: 0 4px 16px #6366f133 !important;
+  }
+
   .timeline {
     padding-bottom: 8px;
   }
@@ -67,6 +224,212 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* SOLUTION EXTRÊME POUR MODE SOMBRE */
+  .dark-mode, .dark-mode * {
+    color: #fff !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+    -webkit-text-fill-color: #fff !important;
+    -webkit-opacity: 1 !important;
+  }
+  
+  /* SOLUTION DIRECTE POUR LES CARDS BLANCHES */
+  /* Ciblage spécifique des cards blanches en mode sombre */
+  .dark-mode .activity-item,
+  .dark-mode .place-item,
+  .dark-mode .location-item,
+  .dark-mode .activity-container,
+  .dark-mode .place-container,
+  .dark-mode .location-container,
+  .dark-mode .activity-content,
+  .dark-mode .place-content,
+  .dark-mode .location-content,
+  .dark-mode .activity-details,
+  .dark-mode .place-details,
+  .dark-mode .location-details,
+  .dark-mode .activity-box,
+  .dark-mode .place-box,
+  .dark-mode .location-box,
+  .dark-mode div[class*="card"],
+  .dark-mode div[class*="badge"],
+  .dark-mode div[class*="place"],
+  .dark-mode div[class*="location"],
+  .dark-mode div[style*="background"],
+  .dark-mode div[style*="background-color"],
+  .dark-mode div[style*="white"],
+  .dark-mode div[style*="#fff"],
+  .dark-mode div[style*="#ffffff"],
+  .dark-mode .card,
+  .dark-mode .badge,
+  .dark-mode .place-card,
+  .dark-mode .location-card,
+  .dark-mode .white-card {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: white !important;
+  }
+  
+  /* Forcer le style sur TOUS les éléments blancs */
+  .dark-mode [style*="background: white"],
+  .dark-mode [style*="background:#fff"],
+  .dark-mode [style*="background: #fff"],
+  .dark-mode [style*="background-color: white"],
+  .dark-mode [style*="background-color:#fff"],
+  .dark-mode [style*="background-color: #fff"],
+  .dark-mode [class*="bg-white"],
+  .dark-mode [class*="white-bg"],
+  .dark-mode [class*="white_bg"] {
+    background-color: #1e293b !important;
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: white !important;
+  }
+  
+  .dark-mode [class*="gray"],
+  .dark-mode [class*="muted"],
+  .dark-mode [class*="secondary"],
+  .dark-mode [class*="text-gray"],
+  .dark-mode [class*="text-muted"],
+  .dark-mode [class*="text-secondary"] {
+    color: #fff !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #fff !important;
+    -webkit-opacity: 1 !important;
+  }
+  .dark-mode a, .dark-mode a *, .dark-mode .link, .dark-mode .link * {
+    color: #60a5fa !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #60a5fa !important;
+  }
+  /* Amélioration du mode sombre */
+  .dark-mode .card, .dark-mode .day-card, .dark-mode .timeline-card {
+    background-color: #212b4a !important;
+    color: #fff !important;
+    border-color: #394150 !important;
+  }
+  .dark-mode .card *, .dark-mode .day-card *, .dark-mode .timeline-card * {
+    color: #fff !important;
+    opacity: 1 !important;
+    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.2) !important;
+  }
+  .dark-mode [class*="badge"], .dark-mode .badge, .dark-mode .location-badge {
+    background-color: #3b82f6 !important;
+    color: white !important;
+    border: 1px solid #60a5fa !important;
+    text-shadow: none !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Correction spécifique des badges de lieu */
+  .dark-mode .location-badge,
+  .dark-mode .place-badge {
+    background-color: #4f46e5 !important;
+    color: white !important;
+    border: 1px solid #6366f1 !important;
+    padding: 4px 8px !important;
+    text-shadow: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+  
+  /* Pour tout lieu avec une icône */
+  .dark-mode [class*="location"] *,
+  .dark-mode [class*="place"] *,
+  .dark-mode [data-location] * {
+    color: white !important;
+    opacity: 1 !important;
+  }
+  
+  /* Éliminer les surlignages jaunes */
+  .dark-mode mark,
+  .dark-mode .highlight,
+  .dark-mode [style*="background-color: yellow"],
+  .dark-mode [style*="background: yellow"] {
+    background-color: transparent !important;
+    color: #60a5fa !important;
+    font-weight: bold !important;
+    text-decoration: underline !important;
+  }
+  .dark-mode .section-title, .dark-mode .day-title, .dark-mode .timeline-title {
+    color: #fff !important;
+    font-weight: 700 !important;
+    opacity: 1 !important;
+    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.5) !important;
+  }
+  
+  /* En-têtes et informations de jour */
+  .dark-mode .day-header,
+  .dark-mode .header,
+  .dark-mode [class*="header"],
+  .dark-mode .breadcrumb,
+  .dark-mode [class*="breadcrumb"] {
+    background-color: #111827 !important;
+    color: white !important;
+    border-bottom: 1px solid #4b5563 !important;
+  }
+  
+  .dark-mode .day-number,
+  .dark-mode .day-count,
+  .dark-mode [class*="day-number"],
+  .dark-mode [class*="day-count"] {
+    color: white !important;
+    font-weight: 700 !important;
+    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.5) !important;
+  }
+  .dark-mode .secondary-text, .dark-mode .timeline-date, .dark-mode .activity-text, .dark-mode .activity-description {
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+  .dark-mode .timeline-title {
+    color: #60a5fa !important;
+    font-weight: 700 !important;
+    opacity: 1 !important;
+  }
+  .dark-mode .timeline-icon {
+    color: #7dd3fc !important;
+    opacity: 1 !important;
+  }
+  .dark-mode a, .dark-mode .link {
+    color: #7dd3fc !important;
+    text-decoration: underline;
+    opacity: 1 !important;
+  }
+  .dark-mode .section-title, .dark-mode .day-title, .dark-mode .activity-title, .dark-mode [class*="title"] {
+    color: #fff !important;
+    font-weight: 700 !important;
+  }
+  .dark-mode .secondary-text {
+    color: #d8dee9 !important;
+  }
+  .dark-mode .progress-bar {
+    background-color: #394150 !important;
+  }
+  .dark-mode .progress-bar-inner {
+    background-color: #10b981 !important;
+  }
+  .dark-mode .timeline-title {
+    color: #7dd3fc !important;
+    font-weight: 700 !important;
+  }
+  .dark-mode .timeline-icon {
+    color: #7dd3fc !important;
+    opacity: 1 !important;
+  }
+  .dark-mode .timeline-date {
+    color: #fff !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+  }
+  .dark-mode .timeline-line {
+    background: #60a5fa !important;
+    opacity: 1 !important;
+  }
+  .dark-mode .badge {
+    background-color: #394150 !important;
+    color: #fff !important;
+    border-color: #4c566a !important;
+  }
+  /* Fin amélioration du mode sombre */
         /* Styles améliorés pour un design moderne */
         :root {
             --primary-color: #4f46e5;
@@ -94,13 +457,32 @@
             background-color: #18181b;
             color: #e5e7eb;
         }
-        /* Mode sombre spécifique */
+        /* Mode sombre optimisé pour AMOLED */
         .dark-mode {
-            --text-color: #f3f4f6;
-            --text-light: #9ca3af;
-            --bg-light: #1f2937;
-            background-color: #111827;
-            color: #f3f4f6;
+            --text-color: #eceff4;
+            --text-light: #e5e9f0;
+            --bg-light: #2e3440;
+            --bg-dark: #1f2937;
+            --bg-card: #2e3440;
+            --primary-color: #88c0d0;
+            --primary-light: #8fbcbb;
+            background-color: #121212;
+            color: #eceff4;
+        }
+        /* Micro-animations et transitions pour une expérience moderne */
+        .micro-animation {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .day-card:hover,
+        .lieu-card:hover,
+        .button:hover {
+            transform: translateY(-2px);
+        }
+        .action-btn, .mark-done-btn {
+            transition: transform 0.2s, background-color 0.3s !important;
+        }
+        .action-btn:active, .mark-done-btn:active {
+            transform: scale(0.98);
         }
         .dark-mode .bg-white {
             background-color: #1f2937;
@@ -1166,11 +1548,30 @@
             });
             document.getElementById('btn-notdone').addEventListener('click', toggleNotdone);
             // Gestion du mode sombre/clair
-document.getElementById('toggle-dark-mode').addEventListener('click', function() {
+document.getElementById('toggle-dark-mode').addEventListener('click', function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
-    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-});
-// À l'initialisation, appliquer le mode sombre si activé
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode);
+    updateDarkModeButton();
+    
+    // Force le style des cards blanches en mode sombre
+    if (isDarkMode) {
+      const whiteCards = document.querySelectorAll('.activity-item, .place-item, div[style*="background: white"], div[style*="background-color: white"], div[style*="background: #fff"], div[style*="background-color: #fff"]');
+      whiteCards.forEach(card => {
+        card.style.backgroundColor = '#1e293b';
+        card.style.color = 'white';
+        card.style.borderColor = '#334155';
+        
+        // Force aussi le style de tous les enfants
+        const children = card.querySelectorAll('*');
+        children.forEach(child => {
+          child.style.color = 'white';
+          child.style.opacity = '1';
+        });
+      });
+    }
+  });
+            // À l'initialisation, appliquer le mode sombre si activé
 if (localStorage.getItem('darkMode') === 'true') {
     document.body.classList.add('dark-mode');
 }
@@ -1325,7 +1726,7 @@ if (localStorage.getItem('darkMode') === 'true') {
                             </div>
                             <div class="mt-2 space-x-1">
                                 ${Object.keys(day.activites).map(moment => 
-                                    `<span class="text-xs px-2 py-1 rounded ${activitiesCompleted[`${day.id}-${moment}`] ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100' : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'}">${moment}</span>`
+                                    `<span class="location-badge ${activitiesCompleted[`${day.id}-${moment}`] ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100' : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'}"><span>${moment}</span></span>`
                                 ).join('')}
                             </div>
                         </div>
@@ -1371,7 +1772,7 @@ if (localStorage.getItem('darkMode') === 'true') {
   <div class="flex-1 flex justify-start">
     <button id="prev-day-btn" class="flex items-center px-3 py-2 rounded-lg text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900 hover:bg-indigo-100 dark:hover:bg-indigo-800 font-semibold shadow-sm border dark:border-gray-700 transition" ${prevDay ? '' : 'disabled style=\'opacity:0.4;pointer-events:none\''}>
       <i class="fas fa-chevron-left mr-2"></i>
-      ${prevDay ? `<span>${new Date(prevDay.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })} - ${prevDay.titre}</span>` : '<span>Début</span>'}
+      ${prevDay ? `<span>${new Date(prevDay.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}</span>` : '<span>Début</span>'}
     </button>
   </div>
   <div class="flex-none text-center w-auto">
@@ -1379,7 +1780,7 @@ if (localStorage.getItem('darkMode') === 'true') {
   </div>
   <div class="flex-1 flex justify-end">
     <button id="next-day-btn" class="flex items-center px-3 py-2 rounded-lg text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900 hover:bg-indigo-100 dark:hover:bg-indigo-800 font-semibold shadow-sm border dark:border-gray-700 transition" ${nextDay ? '' : 'disabled style=\'opacity:0.4;pointer-events:none\''}>
-      ${nextDay ? `<span>${new Date(nextDay.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })} - ${nextDay.titre}</span>` : '<span>Fin</span>'}
+      ${nextDay ? `<span>${new Date(nextDay.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}</span>` : '<span>Fin</span>'}
       <i class="fas fa-chevron-right ml-2"></i>
     </button>
   </div>
@@ -1432,8 +1833,8 @@ if (localStorage.getItem('darkMode') === 'true') {
                                     ${lieu.notes ? `<div class="text-xs text-blue-600 mt-1 dark:text-blue-400">${lieu.notes}</div>` : ''}
                                 </div>
                                 <div class="ml-auto flex items-center space-x-2">
-                                    <button id="btn-lieu-${lieuId}" class="rounded-lg px-4 py-2 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-50 bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500" onclick="toggleLieuCompletionInstant('${lieuId}'); event.stopPropagation();">
-                                        ${isLieuCompleted ? '<i class="fas fa-check mr-1"></i> Fait' : 'Marquer comme fait'}
+                                    <button id="btn-lieu-${lieuId}" class="mark-done-btn rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${isLieuCompleted ? 'completed' : ''}" onclick="toggleLieuCompletionInstant('${lieuId}'); event.stopPropagation();">
+                                        ${isLieuCompleted ? '<i class="fas fa-check mr-1"></i> Fait' : '<i class="far fa-circle mr-1"></i> Non fait'}
                                     </button>
                                 </div>
                             </div>
@@ -1673,9 +2074,9 @@ if (localStorage.getItem('darkMode') === 'true') {
                         const isLieuDone = activitiesCompleted[lieuId];
                         lieuxHtml += `<div class='flex items-center gap-2'>`;
                         if (isLieuDone) {
-                            lieuxHtml += `<span class='inline-flex items-center text-green-600 dark:text-green-400'><i class='fas fa-check-circle mr-1'></i><span class='line-through opacity-70'>${lieu.nom}</span></span>`;
+                            lieuxHtml += `<span class='location-badge bg-green-100 text-green-600 dark:bg-green-800 dark:text-green-200'><i class='fas fa-check-circle mr-1'></i><span class='line-through opacity-70'>${lieu.nom}</span></span>`;
                         } else {
-                            lieuxHtml += `<button onclick="toggleLieuCompletionInstant('${lieuId}')" class="text-xs px-2 py-1 rounded bg-gray-200 hover:bg-green-200 dark:bg-gray-700 dark:hover:bg-green-900 font-medium"><i class='fas fa-circle mr-1 text-gray-400'></i>${lieu.nom}</button>`;
+                            lieuxHtml += `<button onclick="toggleLieuCompletionInstant('${lieuId}')" class="location-badge bg-gray-200 hover:bg-green-200 dark:bg-gray-700 dark:hover:bg-green-900"><i class='fas fa-circle mr-1 text-gray-400'></i>${lieu.nom}</button>`;
                         }
                         if (lieu.adresse) lieuxHtml += `<span class='text-xs text-gray-500 ml-2'>${lieu.adresse}</span>`;
                         lieuxHtml += `</div>`;
@@ -1783,8 +2184,8 @@ if (localStorage.getItem('darkMode') === 'true') {
                     ${activity.distance !== null ? `<div class="text-xs text-indigo-600 dark:text-indigo-400 font-medium mb-1">Distance : ${activity.distance.toFixed(2)} km</div>` : ''}
                 </div>
                 <div class="flex flex-col items-end gap-2 mt-2 md:mt-0 md:ml-4">
-                    <button id="btn-lieu-${lieuId}" class="rounded-lg px-4 py-2 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-50 bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500" text-xs px-3 py-1 ${isLieuCompleted ? 'bg-green-500 hover:bg-green-600' : ''}" onclick="toggleLieuCompletionInstant('${lieuId}'); event.stopPropagation();">
-                        ${isLieuCompleted ? '<i class="fas fa-check mr-1"></i> Fait' : 'Marquer comme fait'}
+                    <button id="btn-lieu-${lieuId}" class="mark-done-btn rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${isLieuCompleted ? 'completed' : ''}" onclick="toggleLieuCompletionInstant('${lieuId}'); event.stopPropagation();">
+                        ${isLieuCompleted ? '<i class="fas fa-check mr-1"></i> Fait' : '<i class="far fa-circle mr-1"></i> Non fait'}
                     </button>
                     <a href="${activity.lieu.kakaoMapUrl || '#'}" target="_blank" class="inline-flex items-center px-3 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-xs">
                         <i class="fas fa-map-marker-alt mr-1"></i> Kakao
@@ -2056,11 +2457,11 @@ function syncLieuButtonsUI() {
         const lieuNom = document.getElementById('lieu-nom-' + lieuId);
         if (btn) {
             if (activitiesCompleted[lieuId]) {
-                btn.classList.add('bg-green-500', 'hover:bg-green-600');
+                btn.classList.add('completed');
                 btn.innerHTML = '<i class="fas fa-check mr-1"></i> Fait';
             } else {
-                btn.classList.remove('bg-green-500', 'hover:bg-green-600');
-                btn.innerHTML = 'Marquer comme fait';
+                btn.classList.remove('completed');
+                btn.innerHTML = '<i class="far fa-circle mr-1"></i> Non fait';
             }
         }
         if (lieuNom) {
