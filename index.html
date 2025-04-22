@@ -1,8 +1,65 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iOCIgZmlsbD0iI2ZmZiIvPjxnPjxwYXRoIGQ9Ik0xNiA4YzQuNDIgMCA4IDMuNTggOCA4IDAgNC40Mi0zLjU4IDgtOCA4LTQuNDIgMC04LTMuNTgtOC04IDAtNC40MiAzLjU4LTggOC04eiIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0xNiA4YzIuMjEgMCA0LjI2Ljg5IDUuNzkgMi4zM0MxOS44NSAxMC4zIDE3Ljg2IDkgMTYgOXMtMy44NS4zLTEuNzkgMS4zM0MxMS43NCA4Ljg5IDEzLjc5IDggMTYgOHoiIGZpbGw9IiNjNjBjMzAiLz48cGF0aCBkPSJNMTYgMjRjLTIuMjEgMC00LjI2LS44OS01Ljc5LTIuMzNDMTIuMTUgMjEuNyAxNC4xNCAyMyAxNiAyM3MzLjg1LS4zIDEuNzktMS4zM0MyMC4yNiAyMy4xMSAxOC4yMSAyNCAxNiAyNHoiIGZpbGw9IiMwMDM0Nzg2Ii8+PC9nPjxnPjxwYXRoIGQ9Ik0yNiA2LjVsLjctLjcgMS42NSAxLjY1LS43LjctMS42NS0xLjY1eiIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik02IDI1LjVsLjctLjcgMS42NSAxLjY1LS43LjctMS42NS0xLjY1eiIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0yNiAyNS41bC0uNy0uNy0xLjY1IDEuNjUuNy43IDEuNjUtMS42NXoiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNNiA2LjVsLS43LS43LTEuNjUgMS42NS43LjcgMS42NS0xLjY1eiIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0yOSAyM2gtMXYtM2gxdjN6IiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTMgOWgxVjZoLTF2M3oiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNMjkgOWgtMXYtM2gxdjN6IiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTMgMjNoMXYzaC0xdi0zeiIgZmlsbD0iIzAwMCIvPjwvZz48L3N2Zz4=" >
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<style>
+  html {
+    font-size: 17px;
+  }
+  @media (max-width: 600px) {
+    html { font-size: 17px; }
+    body { padding-bottom: env(safe-area-inset-bottom, 24px); }
+    .footer-btn, .footer-btn * { font-size: 1.1em; }
+  }
+  footer, .footer {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .footer-btn {
+    min-width: 72px;
+    min-height: 56px;
+    padding: 8px 0 4px 0;
+    border-radius: 16px;
+    margin: 0 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background 0.2s;
+  }
+  .footer-btn:active, .footer-btn:focus {
+    background: #e0e7ff;
+    outline: none;
+  }
+  .footer-btn i {
+    font-size: 32px !important;
+    margin-bottom: 2px;
+  }
+  .footer-btn span {
+    font-size: 0.95em;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  #search-input {
+    min-height: 52px;
+    font-size: 1.1em;
+    border-radius: 12px;
+    padding: 12px 16px 12px 40px;
+  }
+  .day-card, .place-card {
+    border-radius: 18px;
+    padding: 18px 14px;
+    margin-bottom: 14px;
+    font-size: 1.03em;
+  }
+  .timeline {
+    padding-bottom: 8px;
+  }
+  /* Safe area for iOS/Android */
+  body {
+    padding-bottom: env(safe-area-inset-bottom, 24px);
+  }
+</style>
     <title>Séoul 2025 - Itinéraire Interactif</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -25,7 +82,6 @@
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --radius: 0.5rem;
         }
-        
         body {
             font-family: 'Montserrat', sans-serif;
             display: flex;
@@ -49,23 +105,6 @@
         .dark-mode .bg-white {
             background-color: #1f2937;
         }
-        .dark-mode .text-gray-600,
-        .dark-mode .text-gray-700,
-        .dark-mode .text-gray-800,
-        .dark-mode .text-gray-400,
-        .dark-mode .text-gray-300,
-        .dark-mode .text-gray-200,
-        .dark-mode .text-gray-100 {
-            color: #fff !important;
-        }
-        .dark-mode .bg-gray-900,
-        .dark-mode .bg-gray-800,
-        .dark-mode .bg-gray-700,
-        .dark-mode .bg-gray-600,
-        .dark-mode .bg-gray-50,
-        .dark-mode .bg-gray-100 {
-            background-color: #232336 !important;
-        }
         .dark-mode .day-card,
         .dark-mode .timeline,
         .dark-mode .badge,
@@ -78,33 +117,25 @@
             border-radius: 8px;
             padding: 0.2em 0.5em;
         }
-
-        
         main {
             flex: 1;
         }
-        
         .primary-gradient {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         }
-        
         .secondary-gradient {
             background: linear-gradient(135deg, #f97316, var(--accent-color));
         }
-        
         .success-gradient {
             background: linear-gradient(135deg, #059669, var(--success-color));
         }
-        
         .purple-gradient {
             background: linear-gradient(135deg, #8b5cf6, #6d28d9);
         }
-        
         .checked-activity {
             text-decoration: line-through;
             opacity: 0.7;
         }
-        
         .day-card {
             transition: all 0.3s ease;
             border-radius: var(--radius);
@@ -117,25 +148,21 @@
             color: #e5e7eb;
             box-shadow: 0 4px 16px 0 #00000033;
         }
-        
         .day-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
         }
-        
         .day-card.active {
             border-left: 4px solid var(--primary-color);
         }
         .dark-mode .day-card.active {
             border-left: 4px solid #818cf8;
         }
-        
         /* Fil d'Ariane amélioré */
         .breadcrumb-item {
             transition: all 0.3s ease;
             color: var(--text-light);
         }
-        
         .breadcrumb-item.active {
             font-weight: 600;
             color: var(--primary-color);
@@ -143,39 +170,33 @@
         .dark-mode .breadcrumb-item.active {
             color: #818cf8;
         }
-        
         /* Barre de recherche améliorée */
         #searchInput {
             transition: all 0.3s ease;
             box-shadow: var(--shadow-sm);
         }
-        
         #searchInput:focus {
             width: 100%;
             box-shadow: var(--shadow);
             border-color: var(--primary-color);
         }
-        
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
         .fade-in {
             animation: fadeIn 0.3s ease-out;
         }
         .dark-mode .fade-in {
             background-color: #18181b !important;
         }
-        
         /* Carte animée pour afficher la progression */
         .progress-ring {
             transform: rotate(-90deg);
             transform-origin: 50% 50%;
             transition: all 0.3s ease;
         }
-        
         .progress-ring-circle {
             stroke: var(--primary-color);
             stroke-linecap: round;
@@ -184,39 +205,19 @@
         .dark-mode .progress-ring-circle {
             stroke: #818cf8;
         }
-        
         .progress-ring-background {
             stroke: #e5e7eb;
         }
-        
         /* Bouttons plus jolis */
-        .btn {
-            @apply rounded-lg px-4 py-2 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-50;
-        }
-        
-        .btn-notdoneimary {
-            @apply bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500;
-        }
-        
-        .btn-secondary {
-            @apply bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-400;
-        }
-        
-        .btn-accent {
-            @apply bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-400;
-        }
-        
         /* Carte des lieux */
         .place-card {
             transition: all 0.2s ease;
             border-left: 3px solid transparent;
         }
-        
         .place-card:hover {
             border-left-color: var(--accent-color);
             background-color: rgba(249, 250, 251, 0.8);
         }
-        
         /* Mode sombre */
         .dark-mode {
             --text-color: #f3f4f6;
@@ -225,27 +226,8 @@
             background-color: #111827;
             color: #f3f4f6;
         }
-        
         .dark-mode .bg-white {
             background-color: #1f2937;
-        }
-        
-        .dark-mode .text-gray-600,
-        .dark-mode .text-gray-700,
-        .dark-mode .text-gray-800,
-        .dark-mode .text-gray-400,
-        .dark-mode .text-gray-300,
-        .dark-mode .text-gray-200,
-        .dark-mode .text-gray-100 {
-            color: #fff !important;
-        }
-        .dark-mode .bg-gray-900,
-        .dark-mode .bg-gray-800,
-        .dark-mode .bg-gray-700,
-        .dark-mode .bg-gray-600,
-        .dark-mode .bg-gray-50,
-        .dark-mode .bg-gray-100 {
-            background-color: #232336 !important;
         }
         .dark-mode .day-card,
         .dark-mode .timeline,
@@ -259,18 +241,6 @@
             border-radius: 8px;
             padding: 0.2em 0.5em;
         }
-
-        
-        .dark-mode .bg-gray-100,
-        .dark-mode .bg-gray-50 {
-            background-color: #374151;
-        }
-        
-        .dark-mode .border-gray-200,
-        .dark-mode .border-gray-300 {
-            border-color: #4b5563;
-        }
-        
         /* Timeline */
         .hide-scrollbar::-webkit-scrollbar { display: none; }
     .checked-lieu {
@@ -280,7 +250,6 @@
 </style>
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100">
-    <!-- HEADER PRINCIPAL RESTAURÉ -->
     <header class="sticky top-0 z-50 bg-white shadow-md dark:bg-gray-900 border-b dark:border-gray-700">
         <div class="container mx-auto px-4 py-3 dark:text-gray-100">
             <div class="flex justify-between items-center">
@@ -295,14 +264,11 @@
                     <button id="toggleNotdone" class="p-2 rounded-full bg-green-100 text-green-600 hover:bg-green-200 dark:bg-green-800 dark:text-green-300 dark:hover:bg-green-700">
                         <i class="fas fa-list-check"></i>
                     </button>
-                    
                     <button id="toggle-dark-mode" class="p-2 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-yellow-300 dark:hover:bg-gray-600 ml-2 flex items-center" title="Mode sombre/clair">
                         <i class="fas fa-moon"></i>
-                        
                     </button>
                 </div>
             </div>
-            <!-- Barre de recherche améliorée -->
             <div id="search-bar" class="mt-3 hidden fade-in dark:bg-gray-900 dark:text-gray-100">
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -326,13 +292,10 @@
             </div>
         </div>
     </header>
-
     <header class="sticky top-0 z-50 bg-white shadow-md dark:bg-gray-900 border-b dark:border-gray-700">
-        <!-- ... (garde tout le contenu du header ici) ... -->
     </header>
     <main class="flex-1 pb-24 p-4">
         <div id="home-view" class="space-y-4">
-            <!-- Bloc résumé et progression -->
             <div class="bg-gradient-to-r from-indigo-500 to-blue-400 rounded-xl p-4 mb-6 shadow-lg text-white flex items-center justify-between">
                 <div class="flex flex-col items-start">
                     <div class="text-xl font-bold">Itinéraire Séoul</div>
@@ -349,14 +312,11 @@
                     </div>
                 </div>
             </div>
-            <!-- Timeline -->
             <div class="bg-white rounded-xl shadow-lg p-4 mb-6">
                 <div class="font-semibold text-indigo-700 mb-2 flex items-center"><i class="fas fa-route mr-2"></i>Timeline du voyage</div>
                 <div id="timeline" class="flex overflow-x-auto space-x-4 hide-scrollbar pb-2"></div>
             </div>
-            <!-- Conteneur des jours (INDISPENSABLE pour renderDaysView) -->
             <div id="days-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-4"></div>
-                <!-- Les jours seront ajoutés ici dynamiquement -->
             </div>
         </div>
         <div id="notdone-view" class="hidden space-y-4 fade-in">
@@ -370,32 +330,22 @@
         </div>
         </div>
         <div id="day-detail-view" class="hidden fade-in">
-            <!-- Le détail du jour sélectionné s’affichera ici -->
         </div>
-
     </main>
-    <!-- Footer reste tout à la fin du body -->
     <footer class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 dark:bg-gray-900 dark:border-gray-700 z-50">
   <div class="flex justify-around items-center py-2">
     <button id="btn-home" class="flex flex-col items-center p-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
       <i class="fas fa-home text-xl"></i>
       <span class="text-xs mt-1">Accueil</span>
     </button>
-
     <button id="btn-notdone" class="flex flex-col items-center p-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-600 transition-colors">
       <i class="fas fa-list-check text-xl"></i>
       <span class="text-xs mt-1">Activités non réalisées</span>
     </button>
   </div>
 </footer>
-
-
-
-
         </div>
     </footer>
-
-    <!-- Les données et fonctions JavaScript restent inchangées -->
       <script>
         // Données de l'itinéraire avec les modifications demandées
         const itineraireSeoul = [
@@ -1178,37 +1128,29 @@
                 }
             }
         ];
-
         // État de l'application
         let currentView = 'home';
         let selectedDay = null;
         let activitiesCompleted = {};
-        
         let currentPosition = null; // Pour stocker la position géographique actuelle
-
         // Initialisation
         document.addEventListener('DOMContentLoaded', () => {
             initApp();
             initGeolocation();
         });
-
         function initApp() {
             // Charger les données sauvegardées
             loadSavedData();
-
             // Afficher les jours sur la page d'accueil
             renderDaysView();
-
             // Configurer les écouteurs d'événements
             document.getElementById('searchButton').addEventListener('click', toggleSearchBar);
-            
             document.getElementById('toggleNotdone').addEventListener('click', function() {
                 toggleNotdone();
             });
             document.getElementById('search-input').addEventListener('input', performSearch);
             const locBtn = document.getElementById('get-location-btn');
             if (locBtn) locBtn.addEventListener('click', getUserLocation);
-            
             document.getElementById('btn-home').addEventListener('click', function() {
                 const dayDetail = document.getElementById('day-detail-view');
                 if(dayDetail) dayDetail.classList.add('hidden');
@@ -1222,32 +1164,24 @@
                 if(homeView) homeView.classList.remove('hidden');
                 updateActiveNavigation('home');
             });
-
             document.getElementById('btn-notdone').addEventListener('click', toggleNotdone);
-
             // Gestion du mode sombre/clair
 document.getElementById('toggle-dark-mode').addEventListener('click', function() {
     document.body.classList.toggle('dark-mode');
     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
 });
-
 // À l'initialisation, appliquer le mode sombre si activé
 if (localStorage.getItem('darkMode') === 'true') {
     document.body.classList.add('dark-mode');
 }
-            
             // Initialiser le cercle de progression
             updateProgressCircle();
-            
             // Calculer et afficher le nombre total de lieux
             updateTotalPlaces();
-            
             // Initialiser le mode sombre
             initDarkMode();
-            
             // Générer la timeline
             renderTimeline();
-            
             // Ajouter un eventListener sur le lien Accueil du fil d'Ariane
             document.getElementById('breadcrumb-home').addEventListener('click', function() {
                 const dayDetail = document.getElementById('day-detail-view');
@@ -1267,14 +1201,12 @@ if (localStorage.getItem('darkMode') === 'true') {
                 updateActiveNavigation('home');
             });
         }
-        
         function initGeolocation() {
             // Écouteur pour le bouton de localisation
             const locationBtn = document.getElementById('get-location-btn');
             if (locationBtn) {
                 locationBtn.addEventListener('click', getUserLocation);
             }
-            
             // Écouteur pour le curseur de distance
             const distanceRange = document.getElementById('distance-range');
             if (distanceRange) {
@@ -1287,7 +1219,6 @@ if (localStorage.getItem('darkMode') === 'true') {
                 });
             }
         }
-        
         function initDarkMode() {
             const darkModeToggle = document.getElementById('toggle-dark-mode');
             if (darkModeToggle) {
@@ -1302,12 +1233,10 @@ if (localStorage.getItem('darkMode') === 'true') {
                         dot.classList.add('translate-x-6');
                     }
                 }
-                
                 // Ajouter l'écouteur d'événement
                 darkModeToggle.addEventListener('click', function() {
                     this.classList.toggle('bg-indigo-600');
                     const dot = this.querySelector('span');
-                    
                     if (dot && dot.classList.contains('translate-x-1')) {
                         // Activer le mode sombre
                         dot.classList.remove('translate-x-1');
@@ -1323,7 +1252,6 @@ if (localStorage.getItem('darkMode') === 'true') {
                     }
                 });
             }
-            
             const resetCheckmarks = document.getElementById('reset-checkmarks');
             if (resetCheckmarks) {
                 resetCheckmarks.addEventListener('click', function() {
@@ -1337,14 +1265,12 @@ if (localStorage.getItem('darkMode') === 'true') {
                 });
             }
         }
-        
         function loadSavedData() {
             // Charger les activités complétées
             const savedActivities = localStorage.getItem('activitiesCompleted');
             if (savedActivities) {
                 activitiesCompleted = JSON.parse(savedActivities);
             }
-
             // Vérifier si le mode sombre est activé
             const darkMode = localStorage.getItem('darkMode') === 'true';
             if (darkMode) {
@@ -1360,18 +1286,14 @@ if (localStorage.getItem('darkMode') === 'true') {
                     }
                 }
             }
-
             // Calculer et afficher le taux de progression
             updateCompletionRate();
         }
-
         function renderDaysView() {
             const container = document.getElementById('days-container');
             container.innerHTML = '';
-
             // Trier les jours par date
             const sortedDays = [...itineraireSeoul].sort((a, b) => new Date(a.date) - new Date(b.date));
-
             sortedDays.forEach(day => {
                 const date = new Date(day.date);
                 const formattedDate = date.toLocaleDateString('fr-FR', {
@@ -1379,12 +1301,10 @@ if (localStorage.getItem('darkMode') === 'true') {
                     day: 'numeric',
                     month: 'short'
                 });
-                
                 // Calculer le nombre d'activités complétées pour ce jour
                 const totalActivities = Object.keys(day.activites).length;
                 const completedActivities = Object.keys(day.activites).filter(moment => 
                     activitiesCompleted[`${day.id}-${moment}`]).length;
-                
                 // Masquer la tuile si toutes les activités sont complétées (progression 100%)
                 if (totalActivities > 0 && completedActivities === totalActivities) {
                     return;
@@ -1397,43 +1317,33 @@ if (localStorage.getItem('darkMode') === 'true') {
                         <div>
                             <div class="text-sm text-gray-500 dark:text-gray-400">${formattedDate}</div>
                             <h3 class="text-lg font-bold text-gray-800 dark:text-white">${day.titre}</h3>
-                            
                             <div class="flex items-center mt-2">
                                 <div class="bg-gray-200 rounded-full h-2 w-24 mr-2 dark:bg-gray-700">
                                     <div class="bg-indigo-600 rounded-full h-2" style="width: ${(completedActivities/totalActivities) * 100}%;"></div>
                                 </div>
                                 <span class="text-xs text-gray-600 dark:text-gray-400">${completedActivities}/${totalActivities}</span>
                             </div>
-                            
                             <div class="mt-2 space-x-1">
                                 ${Object.keys(day.activites).map(moment => 
                                     `<span class="text-xs px-2 py-1 rounded ${activitiesCompleted[`${day.id}-${moment}`] ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100' : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'}">${moment}</span>`
                                 ).join('')}
                             </div>
                         </div>
-                        
-                        
                     </div>
                 `;
-                
                 container.appendChild(card);
-                
                 // Ajouter un écouteur d'événement sur la carte
                 card.addEventListener('click', () => showDayDetail(day.id));
             });
         }
-
         function showDayDetail(dayId) {
-            // Trouver le jour sélectionné
-            const day = itineraireSeoul.find(d => d.id === dayId);
-            if (!day) return;
-
+    // Trouver le jour sélectionné
+    const day = itineraireSeoul.find(d => d.id === dayId);
+    if (!day) return;
             selectedDay = day;
             currentView = 'day-detail';
-
             // Mettre à jour le fil d'Ariane
             updateBreadcrumb(day);
-
             // Afficher la vue détail et cacher la home
             const detailView = document.getElementById('day-detail-view');
             const homeView = document.getElementById('home-view');
@@ -1447,13 +1357,13 @@ if (localStorage.getItem('darkMode') === 'true') {
                 if (!homeView) console.error("L'élément #home-view est introuvable dans le DOM");
                 return;
             }
-
-            // Récupérer l'ordre chronologique
-            const sortedDays = [...itineraireSeoul].sort((a, b) => new Date(a.date) - new Date(b.date));
+    // Synchroniser l'état des boutons et labels après rendu
+    setTimeout(syncLieuButtonsUI, 0);
+    // Récupérer l'ordre chronologique
+    const sortedDays = [...itineraireSeoul].sort((a, b) => new Date(a.date) - new Date(b.date));
             const currentIndex = sortedDays.findIndex(d => d.id === day.id);
             const prevDay = currentIndex > 0 ? sortedDays[currentIndex - 1] : null;
             const nextDay = currentIndex < sortedDays.length - 1 ? sortedDays[currentIndex + 1] : null;
-
             // Créer la barre de navigation
             const navDiv = document.createElement('div');
             navDiv.className = 'flex items-center w-full mb-5';
@@ -1478,14 +1388,12 @@ if (localStorage.getItem('darkMode') === 'true') {
             // Ajout des écouteurs
             if (prevDay) navDiv.querySelector('#prev-day-btn').addEventListener('click', () => showDayDetail(prevDay.id));
             if (nextDay) navDiv.querySelector('#next-day-btn').addEventListener('click', () => showDayDetail(nextDay.id));
-
             const date = new Date(day.date);
             const formattedDate = date.toLocaleDateString('fr-FR', {
                 weekday: 'long',
                 day: 'numeric',
                 month: 'long'
             });
-            
             // En-tête avec la date
             const header = document.createElement('div');
             header.className = 'bg-white p-5 rounded-lg shadow-md mb-4 dark:bg-gray-800';
@@ -1494,15 +1402,12 @@ if (localStorage.getItem('darkMode') === 'true') {
                 <h2 class="text-xl font-bold text-gray-800 dark:text-white">${day.titre}</h2>
             `;
             detailView.appendChild(header);
-            
             // Activités par moment de la journée
             Object.entries(day.activites).forEach(([moment, details]) => {
                 const activityId = `${day.id}-${moment}`;
                 const isCompleted = activitiesCompleted[activityId] || false;
-                
                 const activityCard = document.createElement('div');
                 activityCard.className = `bg-white p-5 rounded-lg shadow-md mb-4 ${isCompleted ? 'border-l-4 border-green-500' : ''} dark:bg-gray-800`;
-                
                 let activityContent = `
                     <div class="flex justify-between items-center mb-2">
                         <h3 class="font-bold text-lg text-gray-800 dark:text-white">${moment}</h3>
@@ -1512,11 +1417,9 @@ if (localStorage.getItem('darkMode') === 'true') {
                     </div>
                     <p class="${isCompleted ? 'checked-activity' : ''} text-gray-700 dark:text-gray-300">${details.texte}</p>
                 `;
-                
                 // Ajouter les lieux si présents
                 if (details.lieux && details.lieux.length > 0) {
                     activityContent += `<div class="mt-3 space-y-2">`;
-                    
                     details.lieux.forEach((lieu, lieuIdx) => {
                         const lieuId = `${day.id}-${moment}-${lieuIdx}`;
                         const isLieuCompleted = activitiesCompleted[lieuId] || false;
@@ -1529,26 +1432,20 @@ if (localStorage.getItem('darkMode') === 'true') {
                                     ${lieu.notes ? `<div class="text-xs text-blue-600 mt-1 dark:text-blue-400">${lieu.notes}</div>` : ''}
                                 </div>
                                 <div class="ml-auto flex items-center space-x-2">
-                                    <button id="btn-lieu-${lieuId}" class="btn btn-notdoneimary text-xs px-3 py-1 ${isLieuCompleted ? 'bg-green-500 hover:bg-green-600' : ''}" onclick="toggleLieuCompletionInstant('${lieuId}'); event.stopPropagation();">
+                                    <button id="btn-lieu-${lieuId}" class="rounded-lg px-4 py-2 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-50 bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500" onclick="toggleLieuCompletionInstant('${lieuId}'); event.stopPropagation();">
                                         ${isLieuCompleted ? '<i class="fas fa-check mr-1"></i> Fait' : 'Marquer comme fait'}
                                     </button>
                                 </div>
                             </div>
                         `;
                     });
-                    
                     activityContent += `</div>`;
                 }
-                
-
-                
                 activityCard.innerHTML = activityContent;
                 detailView.appendChild(activityCard);
             });
-            
             // Masquer la vue d'accueil et afficher la vue détaillée
             document.getElementById('home-view').classList.add('hidden');
-            
             const mapView = document.getElementById('map-view');
             if(mapView) mapView.classList.add('hidden');
             const notdoneView = document.getElementById('notdone-view');
@@ -1557,28 +1454,23 @@ if (localStorage.getItem('darkMode') === 'true') {
             if(settingsView) settingsView.classList.add('hidden');
             detailView.classList.remove('hidden');
         }
-
         function updateBreadcrumb(day) {
             const breadcrumbHome = document.getElementById('breadcrumb-home');
             const breadcrumbSeparator = document.getElementById('breadcrumb-separator');
             const breadcrumbDay = document.getElementById('breadcrumb-day');
-            
             breadcrumbHome.classList.remove('active');
             breadcrumbSeparator.classList.remove('hidden');
             breadcrumbDay.classList.remove('hidden');
             breadcrumbDay.classList.add('active');
-            
             const date = new Date(day.date);
             breadcrumbDay.textContent = date.toLocaleDateString('fr-FR', {
                 day: 'numeric',
                 month: 'short'
             }) + ' - ' + day.titre;
         }
-        
         function toggleActivityCompletion(activityId) {
     // Inverser l'état d'achèvement
     activitiesCompleted[activityId] = !activitiesCompleted[activityId];
-
     // Trouver l'activité et ses lieux pour cocher/décocher tous les lieux associés
     if (selectedDay && activityId.includes('-')) {
         const [dayId, ...momentParts] = activityId.split('-');
@@ -1591,65 +1483,49 @@ if (localStorage.getItem('darkMode') === 'true') {
             });
         }
     }
-
     // Sauvegarder l'état dans le localStorage
     localStorage.setItem('activitiesCompleted', JSON.stringify(activitiesCompleted));
-
     // Si nous sommes dans la vue détaillée, mettre à jour l'affichage
     if (currentView === 'day-detail' && selectedDay) {
         showDayDetail(selectedDay.id);
     }
-
     // Mettre à jour la page d'accueil
     renderDaysView();
-
     // Mettre à jour le taux de progression
     updateCompletionRate();
 }
-
-        
-
-        
         function updateCompletionRate() {
             // Compter le nombre total d'activités
             let totalActivities = 0;
             let completedActivities = 0;
-            
             itineraireSeoul.forEach(day => {
                 const moments = Object.keys(day.activites);
                 totalActivities += moments.length;
-                
                 moments.forEach(moment => {
                     if (activitiesCompleted[`${day.id}-${moment}`]) {
                         completedActivities++;
                     }
                 });
             });
-            
             // Calculer et afficher le pourcentage
             const completionRate = totalActivities > 0 ? Math.round((completedActivities / totalActivities) * 100) : 0;
             const completionElem = document.getElementById('completion-rate');
             if (completionElem) completionElem.textContent = completionRate + '%';
-            
             // Mettre à jour le cercle de progression
             updateProgressCircle(completionRate);
         }
-        
         function updateProgressCircle(rate = 0) {
             const circle = document.getElementById('progress-circle');
             if (circle) {
                 const radius = circle.getAttribute('r');
                 const circumference = 2 * Math.PI * radius;
                 circle.setAttribute('stroke-dasharray', circumference);
-                
                 const offset = circumference - (rate / 100) * circumference;
                 circle.setAttribute('stroke-dashoffset', offset);
             }
         }
-        
         function updateTotalPlaces() {
             let totalPlaces = 0;
-            
             // Compter tous les lieux dans l'itinéraire
             itineraireSeoul.forEach(day => {
                 Object.values(day.activites).forEach(activity => {
@@ -1658,14 +1534,12 @@ if (localStorage.getItem('darkMode') === 'true') {
                     }
                 });
             });
-            
             // Mettre à jour l'affichage
             const totalPlacesElem = document.getElementById('total-places');
             if (totalPlacesElem) {
                 totalPlacesElem.textContent = totalPlaces;
             }
         }
-        
         function toggleNotdone() {
     // Cacher toutes les vues (vérifier existence)
     const views = ['home-view', 'day-detail-view', 'map-view', 'settings-view'];
@@ -1692,10 +1566,8 @@ if (localStorage.getItem('darkMode') === 'true') {
     // Affiche la liste des activités non réalisées
     findNotdoneActivities();
 }
-        
         function getUserLocation() {
             const statusDiv = document.getElementById('location-status');
-            
             if (!navigator.geolocation) {
                 statusDiv.innerHTML = `
                     <div class="bg-red-50 text-red-600 rounded-lg flex items-start dark:bg-red-900 dark:text-red-300 p-3">
@@ -1708,7 +1580,6 @@ if (localStorage.getItem('darkMode') === 'true') {
                 `;
                 return;
             }
-            
             // Mettre à jour le statut
             statusDiv.innerHTML = `
                 <div class="bg-yellow-50 text-yellow-700 rounded-lg flex items-start dark:bg-yellow-900 dark:text-yellow-300 p-3">
@@ -1719,7 +1590,6 @@ if (localStorage.getItem('darkMode') === 'true') {
                     </div>
                 </div>
             `;
-            
             // Obtenir la position
             navigator.geolocation.getCurrentPosition(
                 // Succès
@@ -1728,7 +1598,6 @@ if (localStorage.getItem('darkMode') === 'true') {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
-                    
                     statusDiv.innerHTML = `
                         <div class="bg-green-50 text-green-700 rounded-lg flex items-start dark:bg-green-900 dark:text-green-300 p-3">
                             <i class="fas fa-check-circle mt-1 mr-2"></i>
@@ -1738,14 +1607,12 @@ if (localStorage.getItem('darkMode') === 'true') {
                             </div>
                         </div>
                     `;
-                    
                     // Trouver les activités à proximité
                     findNotdoneActivities();
                 },
                 // Erreur
                 error => {
                     let errorMessage = "Une erreur est survenue lors de la géolocalisation.";
-                    
                     switch(error.code) {
                         case error.PERMISSION_DENIED:
                             errorMessage = "Vous avez refusé l'accès à votre position.";
@@ -1757,7 +1624,6 @@ if (localStorage.getItem('darkMode') === 'true') {
                             errorMessage = "La demande de géolocalisation a expiré.";
                             break;
                     }
-                    
                     statusDiv.innerHTML = `
                         <div class="bg-red-50 text-red-600 rounded-lg flex items-start dark:bg-red-900 dark:text-red-300 p-3">
                             <i class="fas fa-exclamation-circle mt-1 mr-2"></i>
@@ -1776,12 +1642,10 @@ if (localStorage.getItem('darkMode') === 'true') {
                 }
             );
         }
-        
         function findNotdoneActivities() {
     const container = document.getElementById('notdone-places');
     if (!container) return;
     container.innerHTML = '';
-
     // Récupérer toutes les activités non réalisées (non cochées)
     let totalNotDone = 0;
     // Regrouper les activités non faites par jour
@@ -1837,7 +1701,6 @@ if (localStorage.getItem('darkMode') === 'true') {
         container.innerHTML = `<div class='text-center text-gray-500 dark:text-gray-300 py-8'>Toutes les activités ont été réalisées ! 🎉</div>`;
     }
     return;
-
     // --- Ancienne logique (supprimée) ---
     // Obtenir la distance maximale depuis le curseur
     // const maxDistance = parseFloat(document.getElementById('distance-range').value);
@@ -1858,7 +1721,6 @@ if (localStorage.getItem('darkMode') === 'true') {
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         return R * c;
     }
-
     // Parcourir tous les jours et activités
     itineraireSeoul.forEach(day => {
         const dayDate = new Date(day.date);
@@ -1886,16 +1748,17 @@ if (localStorage.getItem('darkMode') === 'true') {
             });
         }
     });
-
     // Trier par distance
     notdoneActivities.sort((a, b) => a.distance - b.distance);
-
     // Afficher les résultats
     if (notdoneActivities.length > 0) {
         container.innerHTML = '';
         notdoneActivities.forEach((activity, idx) => {
             const dateObj = new Date(activity.day.date);
-            const formattedDate = dateObj.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short' });
+            const formattedDate = dateObj.toLocaleDateString('fr-FR', {
+                day: '2-digit',
+                month: 'short'
+            });
             let icon = 'fa-calendar-day';
             const titre = activity.day.titre.toLowerCase();
             if (titre.includes('arrivée')) icon = 'fa-plane-arrival';
@@ -1920,24 +1783,25 @@ if (localStorage.getItem('darkMode') === 'true') {
                     ${activity.distance !== null ? `<div class="text-xs text-indigo-600 dark:text-indigo-400 font-medium mb-1">Distance : ${activity.distance.toFixed(2)} km</div>` : ''}
                 </div>
                 <div class="flex flex-col items-end gap-2 mt-2 md:mt-0 md:ml-4">
-                    <button id="btn-lieu-${lieuId}" class="btn btn-notdoneimary text-xs px-3 py-1 ${isLieuCompleted ? 'bg-green-500 hover:bg-green-600' : ''}" onclick="toggleLieuCompletionInstant('${lieuId}'); event.stopPropagation();">
+                    <button id="btn-lieu-${lieuId}" class="rounded-lg px-4 py-2 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-50 bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500" text-xs px-3 py-1 ${isLieuCompleted ? 'bg-green-500 hover:bg-green-600' : ''}" onclick="toggleLieuCompletionInstant('${lieuId}'); event.stopPropagation();">
                         ${isLieuCompleted ? '<i class="fas fa-check mr-1"></i> Fait' : 'Marquer comme fait'}
                     </button>
                     <a href="${activity.lieu.kakaoMapUrl || '#'}" target="_blank" class="inline-flex items-center px-3 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-xs">
                         <i class="fas fa-map-marker-alt mr-1"></i> Kakao
                     </a>
-                </div>
+{{ ... }}
             `;
             container.appendChild(card);
         });
     } else {
         container.innerHTML = `
-            <div class="text-center py-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+            <div class="bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-400"er py-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
                 <div class="w-16 h-16 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-4 dark:bg-blue-900">
                     <i class="fas fa-check-circle text-blue-500 text-2xl"></i>
                 </div>
                 <p class="text-gray-600 font-medium dark:text-gray-300">Aucune activité à proximité</p>
                 <p class="text-sm text-gray-500 mt-2 max-w-xs mx-auto dark:text-gray-400">
+{{ ... }}
                     Toutes les activités passées ont été complétées ou aucune n'est dans un rayon de ${maxDistance} km<br>
                     <span class="block mt-2 text-xs text-gray-400">Astuce : Ajoutez des coordonnées GPS (lat/lng) dans vos lieux pour activer la recherche précise !</span>
                 </p>
@@ -1945,85 +1809,128 @@ if (localStorage.getItem('darkMode') === 'true') {
         `;
     }
 }
-
-
         // Fonctions manquantes
 function toggleSearchBar() {
     const searchBar = document.getElementById('search-bar');
     searchBar.classList.toggle('hidden');
-    
     if (!searchBar.classList.contains('hidden')) {
         document.getElementById('search-input').focus();
     }
+}
+// Accent/case-insensitive normalization
+function normalizeStr(str) {
+    return str
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0000-\u001F]/g, '') // caractères de contrôle
+        .replace(/[’'`]/g, '') // apostrophes
+        .replace(/[\u0300-\u036f]/g, '') // accents
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+// Highlight du mot-clé dans le texte
+function highlightQuery(text, query) {
+    if (!query) return text;
+    // Accent/case-insensitive
+    const normText = normalizeStr(text);
+    const normQuery = normalizeStr(query);
+    if (!normText.includes(normQuery)) return text;
+    // On fait un highlight sur les occurrences du mot-clé (sans accents)
+    // Pour chaque match, on retrouve la position dans le texte d'origine
+    const regex = new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+    return text.replace(regex, match => `<span class="bg-yellow-200 text-yellow-900 rounded px-1">${match}</span>`);
 }
 
 function performSearch() {
     const searchInput = document.getElementById('search-input');
     const searchResults = document.getElementById('search-results');
-    const query = searchInput.value.toLowerCase().trim();
-    
-    if (query.length < 2) {
+    const query = searchInput.value.trim();
+    if (normalizeStr(query).length < 2) {
         searchResults.classList.add('hidden');
         return;
     }
-    
-    // Rechercher dans les données
+    // Recherche sur tous les champs pertinents
     const results = [];
-    
     itineraireSeoul.forEach(day => {
-        // Rechercher dans le titre du jour
-        if (day.titre.toLowerCase().includes(query)) {
+        if (normalizeStr(day.titre).includes(normalizeStr(query))) {
             results.push({
                 type: 'day',
-                day: day,
-                text: day.titre
+                day,
+                text: day.titre,
+                highlight: highlightQuery(day.titre, query)
             });
         }
-        
-        // Rechercher dans les activités et lieux
         Object.entries(day.activites).forEach(([moment, details]) => {
-            if (details.texte.toLowerCase().includes(query)) {
+            if (normalizeStr(details.texte).includes(normalizeStr(query))) {
                 results.push({
                     type: 'activity',
-                    day: day,
-                    moment: moment,
-                    text: details.texte
+                    day,
+                    moment,
+                    text: details.texte,
+                    highlight: highlightQuery(details.texte, query)
                 });
             }
-            
-            // Lieux
+            if (normalizeStr(moment).includes(normalizeStr(query))) {
+                results.push({
+                    type: 'activity',
+                    day,
+                    moment,
+                    text: moment,
+                    highlight: highlightQuery(moment, query)
+                });
+            }
             if (details.lieux) {
                 details.lieux.forEach(lieu => {
-                    if (lieu.nom.toLowerCase().includes(query) || 
-                        (lieu.adresse && lieu.adresse.toLowerCase().includes(query))) {
+                    if (lieu.nom && normalizeStr(lieu.nom).includes(normalizeStr(query))) {
                         results.push({
                             type: 'place',
-                            day: day,
-                            moment: moment,
+                            day,
+                            moment,
+                            lieu,
                             text: lieu.nom,
-                            lieu: lieu
+                            highlight: highlightQuery(lieu.nom, query)
+                        });
+                    }
+                    if (lieu.adresse && normalizeStr(lieu.adresse).includes(normalizeStr(query))) {
+                        results.push({
+                            type: 'place',
+                            day,
+                            moment,
+                            lieu,
+                            text: lieu.adresse,
+                            highlight: highlightQuery(lieu.adresse, query)
                         });
                     }
                 });
             }
         });
     });
-    
-    // Afficher les résultats
+    // Affichage des résultats
     if (results.length > 0) {
         searchResults.innerHTML = '';
         searchResults.classList.remove('hidden');
-        
+
+        // Fermeture au clic extérieur (robuste)
+        if (!window.searchOutsideListener) {
+            window.searchOutsideListener = function(e) {
+                if (!searchResults.contains(e.target) && e.target !== searchInput) {
+                    searchResults.classList.add('hidden');
+                    document.removeEventListener('mousedown', window.searchOutsideListener);
+                    window.searchOutsideListener = null;
+                }
+            };
+            document.addEventListener('mousedown', window.searchOutsideListener);
+        }
+
         results.forEach(result => {
             const dateObj = new Date(result.day.date);
             const formattedDate = dateObj.toLocaleDateString('fr-FR', {
                 day: 'numeric',
                 month: 'short'
             });
-            
             const resultItem = document.createElement('div');
-            resultItem.className = 'p-3 border-b hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer';
-            
+            resultItem.className = 'p-3 border-b hover:bg-yellow-50 dark:hover:bg-gray-700 cursor-pointer';
             let icon = '';
             if (result.type === 'day') {
                 icon = '<i class="fas fa-calendar-day text-indigo-500 mr-2"></i>';
@@ -2032,33 +1939,38 @@ function performSearch() {
             } else if (result.type === 'place') {
                 icon = '<i class="fas fa-map-marker-alt text-red-500 mr-2"></i>';
             }
-            
+            let subtitle = '';
+            if(result.type === 'activity') {
+                subtitle = `${formattedDate} - ${result.day.titre}${result.moment ? ' (' + result.moment + ')' : ''}`;
+            } else if(result.type === 'place') {
+                subtitle = `${formattedDate} - ${result.day.titre}${result.moment ? ' (' + result.moment + ')' : ''}`;
+                if(result.lieu && result.lieu.adresse) {
+                    subtitle += `<br><span class='text-xs text-gray-400'>${result.lieu.adresse}</span>`;
+                }
+            } else if(result.type === 'day') {
+                subtitle = `${formattedDate}`;
+            }
             resultItem.innerHTML = `
                 <div class="flex items-center">
                     ${icon}
                     <div>
-                        <div class="font-medium">${result.text}</div>
-                        <div class="text-xs text-gray-500">${formattedDate} - ${result.day.titre}</div>
+                        <div class="font-medium">${result.highlight}</div>
+                        <div class="text-xs text-gray-500">${subtitle}</div>
                     </div>
                 </div>
             `;
-            
             resultItem.addEventListener('click', () => {
                 searchResults.classList.add('hidden');
                 searchInput.value = '';
                 showDayDetail(result.day.id);
             });
-            
             searchResults.appendChild(resultItem);
         });
     } else {
-        searchResults.innerHTML = '<div class="p-3 text-gray-500">Aucun résultat trouvé</div>';
+        searchResults.innerHTML = '<div class="p-4 text-center text-red-600 font-semibold">Aucun résultat trouvé</div>';
         searchResults.classList.remove('hidden');
     }
 }
-
-
-
 function updateActiveNavigation(tab) {
     const buttons = ['btn-home', 'btn-notdone'];
     buttons.forEach(btnId => {
@@ -2074,13 +1986,11 @@ function updateActiveNavigation(tab) {
         }
     });
 }
-
 // Génération de la timeline
 function renderTimeline() {
     const timeline = document.getElementById('timeline');
     if (!timeline) return;
     timeline.innerHTML = '';
-
     // Ordre chronologique classique (gauche à droite)
     const sortedDays = [...itineraireSeoul].sort((a, b) => new Date(a.date) - new Date(b.date));
     sortedDays.forEach((day, idx) => {
@@ -2095,7 +2005,6 @@ function renderTimeline() {
         else if (titre.includes('nature') || titre.includes('randonnée')) icon = 'fa-tree';
         else if (titre.includes('concert') || titre.includes('music')) icon = 'fa-music';
         else if (titre.includes('départ')) icon = 'fa-plane-departure';
-
         // Bloc cliquable horizontal
         const timelineStep = document.createElement('div');
         timelineStep.className = 'flex flex-col items-center min-w-[120px] group cursor-pointer hover:bg-indigo-50 dark:hover:bg-indigo-900 rounded-lg p-2 transition relative';
@@ -2113,11 +2022,7 @@ function renderTimeline() {
         timeline.appendChild(timelineStep);
     });
 }
-
-
-
 </script>
-<!-- Forcer Tailwind à inclure les couleurs dynamiques -->
 <div class="hidden">
   bg-blue-100 bg-pink-100 bg-yellow-100 bg-green-100 bg-red-100 bg-gray-200 bg-indigo-100
 </div>
@@ -2137,32 +2042,36 @@ window.toggleLieuCompletion = function(lieuId) {
         findNotdoneActivities(window.currentPosition);
     }
 };
-
 // Fonction globale pour validation instantanée d'un lieu dans la vue jour
 window.toggleLieuCompletionInstant = function(lieuId) {
     activitiesCompleted[lieuId] = !activitiesCompleted[lieuId];
     localStorage.setItem('activitiesCompleted', JSON.stringify(activitiesCompleted));
-    // MAJ immédiate du bouton
-    const btn = document.getElementById('btn-lieu-' + lieuId);
-    if (btn) {
-        if (activitiesCompleted[lieuId]) {
-            btn.classList.add('bg-green-500', 'hover:bg-green-600');
-            btn.innerHTML = '<i class="fas fa-check mr-1"></i> Fait';
-        } else {
-            btn.classList.remove('bg-green-500', 'hover:bg-green-600');
-            btn.innerHTML = 'Marquer comme fait';
-        }
-    }
-    // Barrer le texte du lieu (nom)
-    const lieuNom = document.getElementById('lieu-nom-' + lieuId);
-    if (lieuNom) {
-        if (activitiesCompleted[lieuId]) {
-            lieuNom.classList.add('checked-lieu');
-        } else {
-            lieuNom.classList.remove('checked-lieu');
-        }
-    }
+    // MAJ immédiate du bouton et du label
+    syncLieuButtonsUI();
 };
+// Synchronise l'état UI de tous les boutons et labels de lieux selon activitiesCompleted
+function syncLieuButtonsUI() {
+    Object.keys(activitiesCompleted).forEach(lieuId => {
+        const btn = document.getElementById('btn-lieu-' + lieuId);
+        const lieuNom = document.getElementById('lieu-nom-' + lieuId);
+        if (btn) {
+            if (activitiesCompleted[lieuId]) {
+                btn.classList.add('bg-green-500', 'hover:bg-green-600');
+                btn.innerHTML = '<i class="fas fa-check mr-1"></i> Fait';
+            } else {
+                btn.classList.remove('bg-green-500', 'hover:bg-green-600');
+                btn.innerHTML = 'Marquer comme fait';
+            }
+        }
+        if (lieuNom) {
+            if (activitiesCompleted[lieuId]) {
+                lieuNom.classList.add('checked-lieu');
+            } else {
+                lieuNom.classList.remove('checked-lieu');
+            }
+        }
+    });
+}
 </script>
 </body>
 </html>
