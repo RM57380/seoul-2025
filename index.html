@@ -224,213 +224,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* SOLUTION EXTRÊME POUR MODE SOMBRE */
-  .dark-mode, .dark-mode * {
-    color: #fff !important;
-    opacity: 1 !important;
-    text-shadow: none !important;
-    -webkit-text-fill-color: #fff !important;
-    -webkit-opacity: 1 !important;
-  }
-  
-  /* SOLUTION DIRECTE POUR LES CARDS BLANCHES */
-  /* Ciblage spécifique des cards blanches en mode sombre */
-  .dark-mode .activity-item,
-  .dark-mode .place-item,
-  .dark-mode .location-item,
-  .dark-mode .activity-container,
-  .dark-mode .place-container,
-  .dark-mode .location-container,
-  .dark-mode .activity-content,
-  .dark-mode .place-content,
-  .dark-mode .location-content,
-  .dark-mode .activity-details,
-  .dark-mode .place-details,
-  .dark-mode .location-details,
-  .dark-mode .activity-box,
-  .dark-mode .place-box,
-  .dark-mode .location-box,
-  .dark-mode div[class*="card"],
-  .dark-mode div[class*="badge"],
-  .dark-mode div[class*="place"],
-  .dark-mode div[class*="location"],
-  .dark-mode div[style*="background"],
-  .dark-mode div[style*="background-color"],
-  .dark-mode div[style*="white"],
-  .dark-mode div[style*="#fff"],
-  .dark-mode div[style*="#ffffff"],
-  .dark-mode .card,
-  .dark-mode .badge,
-  .dark-mode .place-card,
-  .dark-mode .location-card,
-  .dark-mode .white-card {
-    background-color: #1e293b !important;
-    border-color: #334155 !important;
-    color: white !important;
-  }
-  
-  /* Forcer le style sur TOUS les éléments blancs */
-  .dark-mode [style*="background: white"],
-  .dark-mode [style*="background:#fff"],
-  .dark-mode [style*="background: #fff"],
-  .dark-mode [style*="background-color: white"],
-  .dark-mode [style*="background-color:#fff"],
-  .dark-mode [style*="background-color: #fff"],
-  .dark-mode [class*="bg-white"],
-  .dark-mode [class*="white-bg"],
-  .dark-mode [class*="white_bg"] {
-    background-color: #1e293b !important;
-    background: #1e293b !important;
-    border-color: #334155 !important;
-    color: white !important;
-  }
-  
-  .dark-mode [class*="gray"],
-  .dark-mode [class*="muted"],
-  .dark-mode [class*="secondary"],
-  .dark-mode [class*="text-gray"],
-  .dark-mode [class*="text-muted"],
-  .dark-mode [class*="text-secondary"] {
-    color: #fff !important;
-    opacity: 1 !important;
-    -webkit-text-fill-color: #fff !important;
-    -webkit-opacity: 1 !important;
-  }
-  .dark-mode a, .dark-mode a *, .dark-mode .link, .dark-mode .link * {
-    color: #60a5fa !important;
-    opacity: 1 !important;
-    -webkit-text-fill-color: #60a5fa !important;
-  }
-  /* Amélioration du mode sombre */
-  .dark-mode .card, .dark-mode .day-card, .dark-mode .timeline-card {
-    background-color: #212b4a !important;
-    color: #fff !important;
-    border-color: #394150 !important;
-  }
-  .dark-mode .card *, .dark-mode .day-card *, .dark-mode .timeline-card * {
-    color: #fff !important;
-    opacity: 1 !important;
-    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.2) !important;
-  }
-  .dark-mode [class*="badge"], .dark-mode .badge, .dark-mode .location-badge {
-    background-color: #3b82f6 !important;
-    color: white !important;
-    border: 1px solid #60a5fa !important;
-    text-shadow: none !important;
-    font-weight: 600 !important;
-  }
-  
-  /* Correction spécifique des badges de lieu */
-  .dark-mode .location-badge,
-  .dark-mode .place-badge {
-    background-color: #4f46e5 !important;
-    color: white !important;
-    border: 1px solid #6366f1 !important;
-    padding: 4px 8px !important;
-    text-shadow: none !important;
-    display: inline-flex !important;
-    align-items: center !important;
-  }
-  
-  /* Pour tout lieu avec une icône */
-  .dark-mode [class*="location"] *,
-  .dark-mode [class*="place"] *,
-  .dark-mode [data-location] * {
-    color: white !important;
-    opacity: 1 !important;
-  }
-  
-  /* Éliminer les surlignages jaunes */
-  .dark-mode mark,
-  .dark-mode .highlight,
-  .dark-mode [style*="background-color: yellow"],
-  .dark-mode [style*="background: yellow"] {
-    background-color: transparent !important;
-    color: #60a5fa !important;
-    font-weight: bold !important;
-    text-decoration: underline !important;
-  }
-  .dark-mode .section-title, .dark-mode .day-title, .dark-mode .timeline-title {
-    color: #fff !important;
-    font-weight: 700 !important;
-    opacity: 1 !important;
-    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.5) !important;
-  }
-  
-  /* En-têtes et informations de jour */
-  .dark-mode .day-header,
-  .dark-mode .header,
-  .dark-mode [class*="header"],
-  .dark-mode .breadcrumb,
-  .dark-mode [class*="breadcrumb"] {
-    background-color: #111827 !important;
-    color: white !important;
-    border-bottom: 1px solid #4b5563 !important;
-  }
-  
-  .dark-mode .day-number,
-  .dark-mode .day-count,
-  .dark-mode [class*="day-number"],
-  .dark-mode [class*="day-count"] {
-    color: white !important;
-    font-weight: 700 !important;
-    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.5) !important;
-  }
-  .dark-mode .secondary-text, .dark-mode .timeline-date, .dark-mode .activity-text, .dark-mode .activity-description {
-    color: #ffffff !important;
-    opacity: 1 !important;
-  }
-  .dark-mode .timeline-title {
-    color: #60a5fa !important;
-    font-weight: 700 !important;
-    opacity: 1 !important;
-  }
-  .dark-mode .timeline-icon {
-    color: #7dd3fc !important;
-    opacity: 1 !important;
-  }
-  .dark-mode a, .dark-mode .link {
-    color: #7dd3fc !important;
-    text-decoration: underline;
-    opacity: 1 !important;
-  }
-  .dark-mode .section-title, .dark-mode .day-title, .dark-mode .activity-title, .dark-mode [class*="title"] {
-    color: #fff !important;
-    font-weight: 700 !important;
-  }
-  .dark-mode .secondary-text {
-    color: #d8dee9 !important;
-  }
-  .dark-mode .progress-bar {
-    background-color: #394150 !important;
-  }
-  .dark-mode .progress-bar-inner {
-    background-color: #10b981 !important;
-  }
-  .dark-mode .timeline-title {
-    color: #7dd3fc !important;
-    font-weight: 700 !important;
-  }
-  .dark-mode .timeline-icon {
-    color: #7dd3fc !important;
-    opacity: 1 !important;
-  }
-  .dark-mode .timeline-date {
-    color: #fff !important;
-    opacity: 1 !important;
-    font-weight: 500 !important;
-  }
-  .dark-mode .timeline-line {
-    background: #60a5fa !important;
-    opacity: 1 !important;
-  }
-  .dark-mode .badge {
-    background-color: #394150 !important;
-    color: #fff !important;
-    border-color: #4c566a !important;
-  }
-  /* Fin amélioration du mode sombre */
-        /* Styles améliorés pour un design moderne */
         :root {
             --primary-color: #4f46e5;
             --secondary-color: #3b82f6;
@@ -453,22 +246,6 @@
             background-color: #f3f4f6;
             color: var(--text-color);
         }
-        body.dark-mode {
-            background-color: #18181b;
-            color: #e5e7eb;
-        }
-        /* Mode sombre optimisé pour AMOLED */
-        .dark-mode {
-            --text-color: #eceff4;
-            --text-light: #e5e9f0;
-            --bg-light: #2e3440;
-            --bg-dark: #1f2937;
-            --bg-card: #2e3440;
-            --primary-color: #88c0d0;
-            --primary-light: #8fbcbb;
-            background-color: #121212;
-            color: #eceff4;
-        }
         /* Micro-animations et transitions pour une expérience moderne */
         .micro-animation {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -483,21 +260,6 @@
         }
         .action-btn:active, .mark-done-btn:active {
             transform: scale(0.98);
-        }
-        .dark-mode .bg-white {
-            background-color: #1f2937;
-        }
-        .dark-mode .day-card,
-        .dark-mode .timeline,
-        .dark-mode .badge,
-        .dark-mode .timeline-date, .dark-mode .timeline-step-date, .dark-mode .timeline-date-label,
-        .dark-mode .timeline-step-title, .dark-mode .timeline-step-label {
-            color: #fff !important;
-            font-weight: bold !important;
-            text-shadow: 0 1px 4px #232336, 0 0 2px #232336;
-            background: rgba(35,35,54,0.75);
-            border-radius: 8px;
-            padding: 0.2em 0.5em;
         }
         main {
             flex: 1;
@@ -514,10 +276,6 @@
         .purple-gradient {
             background: linear-gradient(135deg, #8b5cf6, #6d28d9);
         }
-        .checked-activity {
-            text-decoration: line-through;
-            opacity: 0.7;
-        }
         .day-card {
             transition: all 0.3s ease;
             border-radius: var(--radius);
@@ -525,20 +283,12 @@
             background-color: #fff;
             color: #1f2937;
         }
-        .dark-mode .day-card {
-            background-color: #232336;
-            color: #e5e7eb;
-            box-shadow: 0 4px 16px 0 #00000033;
-        }
         .day-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
         }
         .day-card.active {
             border-left: 4px solid var(--primary-color);
-        }
-        .dark-mode .day-card.active {
-            border-left: 4px solid #818cf8;
         }
         /* Fil d'Ariane amélioré */
         .breadcrumb-item {
@@ -548,9 +298,6 @@
         .breadcrumb-item.active {
             font-weight: 600;
             color: var(--primary-color);
-        }
-        .dark-mode .breadcrumb-item.active {
-            color: #818cf8;
         }
         /* Barre de recherche améliorée */
         #searchInput {
@@ -570,9 +317,6 @@
         .fade-in {
             animation: fadeIn 0.3s ease-out;
         }
-        .dark-mode .fade-in {
-            background-color: #18181b !important;
-        }
         /* Carte animée pour afficher la progression */
         .progress-ring {
             transform: rotate(-90deg);
@@ -583,9 +327,6 @@
             stroke: var(--primary-color);
             stroke-linecap: round;
             transition: stroke-dashoffset 0.3s ease;
-        }
-        .dark-mode .progress-ring-circle {
-            stroke: #818cf8;
         }
         .progress-ring-background {
             stroke: #e5e7eb;
@@ -600,67 +341,37 @@
             border-left-color: var(--accent-color);
             background-color: rgba(249, 250, 251, 0.8);
         }
-        /* Mode sombre */
-        .dark-mode {
-            --text-color: #f3f4f6;
-            --text-light: #9ca3af;
-            --bg-light: #1f2937;
-            background-color: #111827;
-            color: #f3f4f6;
-        }
-        .dark-mode .bg-white {
-            background-color: #1f2937;
-        }
-        .dark-mode .day-card,
-        .dark-mode .timeline,
-        .dark-mode .badge,
-        .dark-mode .timeline-date, .dark-mode .timeline-step-date, .dark-mode .timeline-date-label,
-        .dark-mode .timeline-step-title, .dark-mode .timeline-step-label {
-            color: #fff !important;
-            font-weight: bold !important;
-            text-shadow: 0 1px 4px #232336, 0 0 2px #232336;
-            background: rgba(35,35,54,0.75);
-            border-radius: 8px;
-            padding: 0.2em 0.5em;
-        }
         /* Timeline */
         .hide-scrollbar::-webkit-scrollbar { display: none; }
-    .checked-lieu {
-    text-decoration: line-through;
-    opacity: 0.6;
-}
-</style>
+    </style>
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100">
-    <header class="sticky top-0 z-50 bg-white shadow-md dark:bg-gray-900 border-b dark:border-gray-700">
-        <div class="container mx-auto px-4 py-3 dark:text-gray-100">
+    <header class="sticky top-0 z-50 bg-white shadow-md border-b">
+        <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
-                <h1 class="text-xl font-bold text-gray-800 dark:text-white flex items-center">
+                <h1 class="text-xl font-bold text-gray-800 flex items-center">
                     <i class="fas fa-plane-departure mr-2 text-indigo-600"></i>
                     Séoul 2025
                 </h1>
                 <div class="flex space-x-3">
-                    <button id="searchButton" class="p-2 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600">
+                    <button id="searchButton" class="p-2 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200">
                         <i class="fas fa-search"></i>
                     </button>
-                    <button id="toggleNotdone" class="p-2 rounded-full bg-green-100 text-green-600 hover:bg-green-200 dark:bg-green-800 dark:text-green-300 dark:hover:bg-green-700">
+                    <button id="toggleNotdone" class="p-2 rounded-full bg-green-100 text-green-600 hover:bg-green-200">
                         <i class="fas fa-list-check"></i>
-                    </button>
-                    <button id="toggle-dark-mode" class="p-2 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-yellow-300 dark:hover:bg-gray-600 ml-2 flex items-center" title="Mode sombre/clair">
-                        <i class="fas fa-moon"></i>
                     </button>
                 </div>
             </div>
-            <div id="search-bar" class="mt-3 hidden fade-in dark:bg-gray-900 dark:text-gray-100">
+            <div id="search-bar" class="mt-3 hidden fade-in">
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <i class="fas fa-search text-gray-400"></i>
                     </div>
                     <input type="text" id="search-input" 
-                        class="w-full pl-10 pr-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        class="w-full pl-10 pr-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         placeholder="Rechercher un lieu, une activité...">
                 </div>
-                <div id="search-results" class="mt-2 max-h-60 overflow-y-auto bg-white rounded-lg shadow-lg hidden dark:bg-gray-800"></div>
+                <div id="search-results" class="mt-2 max-h-60 overflow-y-auto bg-white rounded-lg shadow-lg hidden"></div>
             </div>
             <div class="mb-2">
                 <div class="breadcrumb overflow-x-auto whitespace-nowrap py-1 text-sm mb-0">
@@ -674,7 +385,7 @@
             </div>
         </div>
     </header>
-    <header class="sticky top-0 z-50 bg-white shadow-md dark:bg-gray-900 border-b dark:border-gray-700">
+    <header class="sticky top-0 z-50 bg-white shadow-md border-b">
     </header>
     <main class="flex-1 pb-24 p-4">
         <div id="home-view" class="space-y-4">
@@ -704,7 +415,7 @@
         <div id="notdone-view" class="hidden space-y-4 fade-in">
             <div id="location-status" class="mb-4"></div>
             <div id="notdone-places" class="mt-6 space-y-2">
-                <div class="text-center py-6 text-gray-500 dark:text-gray-400">
+                <div class="text-center py-6 text-gray-500">
                     <img src="https://cdn.iconscout.com/icon/free/png-256/free-location-pin-find-place-position-navigation-3-27063.png" alt="Location" class="w-16 h-16 mx-auto opacity-50 mb-3">
                     <p>Activez la localisation pour voir les activités à proximité</p>
                 </div>
@@ -714,13 +425,13 @@
         <div id="day-detail-view" class="hidden fade-in">
         </div>
     </main>
-    <footer class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 dark:bg-gray-900 dark:border-gray-700 z-50">
+    <footer class="fixed bottom-0 left-0 w-full bg-white border-t">
   <div class="flex justify-around items-center py-2">
-    <button id="btn-home" class="flex flex-col items-center p-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+    <button id="btn-home" class="flex flex-col items-center p-2 text-gray-600 hover:text-indigo-600 transition-colors">
       <i class="fas fa-home text-xl"></i>
       <span class="text-xs mt-1">Accueil</span>
     </button>
-    <button id="btn-notdone" class="flex flex-col items-center p-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-600 transition-colors">
+    <button id="btn-notdone" class="flex flex-col items-center p-2 text-gray-600 hover:text-indigo-600 transition-colors">
       <i class="fas fa-list-check text-xl"></i>
       <span class="text-xs mt-1">Activités non réalisées</span>
     </button>
@@ -1547,34 +1258,6 @@
                 updateActiveNavigation('home');
             });
             document.getElementById('btn-notdone').addEventListener('click', toggleNotdone);
-            // Gestion du mode sombre/clair
-document.getElementById('toggle-dark-mode').addEventListener('click', function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-    const isDarkMode = document.body.classList.contains('dark-mode');
-    localStorage.setItem('darkMode', isDarkMode);
-    updateDarkModeButton();
-    
-    // Force le style des cards blanches en mode sombre
-    if (isDarkMode) {
-      const whiteCards = document.querySelectorAll('.activity-item, .place-item, div[style*="background: white"], div[style*="background-color: white"], div[style*="background: #fff"], div[style*="background-color: #fff"]');
-      whiteCards.forEach(card => {
-        card.style.backgroundColor = '#1e293b';
-        card.style.color = 'white';
-        card.style.borderColor = '#334155';
-        
-        // Force aussi le style de tous les enfants
-        const children = card.querySelectorAll('*');
-        children.forEach(child => {
-          child.style.color = 'white';
-          child.style.opacity = '1';
-        });
-      });
-    }
-  });
-            // À l'initialisation, appliquer le mode sombre si activé
-if (localStorage.getItem('darkMode') === 'true') {
-    document.body.classList.add('dark-mode');
-}
             // Initialiser le cercle de progression
             updateProgressCircle();
             // Calculer et afficher le nombre total de lieux
